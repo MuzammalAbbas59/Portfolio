@@ -8,70 +8,72 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gray: {
-          50: '#f9fafb',
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827',
-        },
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#f5f7fa',
+          100: '#e4e7ed',
+          200: '#c8d0d9',
+          300: '#aeb8c6',
+          400: '#8a9eb2',
+          500: '#64748b', // blue-gray
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         },
-        secondary: {
-          50: '#fdf4ff',
-          100: '#fae8ff',
-          200: '#f5d0fe',
-          300: '#f0abfc',
-          400: '#e879f9',
-          500: '#d946ef',
-          600: '#c026d3',
-          700: '#a21caf',
-          800: '#86198f',
-          900: '#701a75',
+        accent: {
+          50: '#fdf6f0',
+          100: '#fae9d7',
+          200: '#f5d1b8',
+          300: '#f0b98a',
+          400: '#e89a4c',
+          500: '#d97706', // gold/amber
+          600: '#b45309',
+          700: '#92400e',
+          800: '#78350f',
+          900: '#451a03',
+        },
+        code: {
+          100: '#f3f4f6',
+          500: '#0ea5e9',
+          900: '#1e293b',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
-        mono: ['var(--font-fira-code)', 'monospace'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'ui-serif', 'Georgia', 'serif'],
+        mono: ['Fira Code', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
+      backgroundImage: {
+        'artistic-gradient': 'linear-gradient(135deg, #f5f7fa 0%, #e4e7ed 100%)',
+        'terminal-grid': 'repeating-linear-gradient(0deg, #e4e7ed, #e4e7ed 1px, transparent 1px, transparent 32px), repeating-linear-gradient(90deg, #e4e7ed, #e4e7ed 1px, transparent 1px, transparent 32px)'
       },
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: 'none',
-            color: '#1f2937',
-            a: {
-              color: '#0ea5e9',
-              '&:hover': {
-                color: '#0284c7',
-              },
-            },
+            color: '#334155',
+            fontFamily: 'Playfair Display, ui-serif, Georgia, serif',
             h1: {
-              fontFamily: 'var(--font-playfair)',
+              fontFamily: 'Playfair Display, ui-serif, Georgia, serif',
               fontWeight: '700',
+              letterSpacing: '-0.02em',
             },
             h2: {
-              fontFamily: 'var(--font-playfair)',
+              fontFamily: 'Playfair Display, ui-serif, Georgia, serif',
               fontWeight: '600',
             },
-            h3: {
-              fontFamily: 'var(--font-playfair)',
-              fontWeight: '600',
+            code: {
+              color: '#0ea5e9',
+              backgroundColor: '#f3f4f6',
+              fontFamily: 'Fira Code, ui-monospace, SFMono-Regular, monospace',
+              padding: '0.2em 0.4em',
+              borderRadius: '0.25em',
+            },
+            a: {
+              color: '#d97706',
+              textDecoration: 'underline',
+              '&:hover': {
+                color: '#b45309',
+              },
             },
           },
         },

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Fira_Code } from "next/font/google";
 import "./globals.css";
-import ClientLayout from "@/components/ClientLayout";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,6 +22,7 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://your-domain.com'),
   title: "Muzammal Abbas | Software Engineer & Poet",
   description: "Portfolio website showcasing my work as a Ruby on Rails software engineer and my creative journey as a poet.",
   openGraph: {
@@ -52,10 +53,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${firaCode.variable}`}>
-      <body>
-        <ClientLayout>
+      <body className="min-h-screen flex flex-col">
+        <ClientLayoutWrapper>
           {children}
-        </ClientLayout>
+        </ClientLayoutWrapper>
       </body>
     </html>
   );

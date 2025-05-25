@@ -1,227 +1,182 @@
+'use client';
 import Link from 'next/link';
+import { FaArrowRight, FaFeatherAlt, FaCode } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.15 * i,
+      duration: 0.7,
+      ease: 'easeOut',
+    },
+  }),
+};
 
 export default function Home() {
   return (
-    <>
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-[#232946] via-[#3e2f5b] to-[#5f6caf] text-[#f4f4f6] font-sans">
+      {/* Parallax SVG Background */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <svg width="100%" height="100%" className="absolute top-0 left-0 opacity-30 animate-pulse" style={{filter:'blur(40px)'}}>
+          <circle cx="60%" cy="30%" r="320" fill="#ff4f81" fillOpacity="0.10" />
+          <circle cx="20%" cy="80%" r="180" fill="#ff6f61" fillOpacity="0.10" />
+        </svg>
+        <svg width="100%" height="100" viewBox="0 0 1440 100" className="absolute bottom-0 left-0 w-full" preserveAspectRatio="none">
+          <path fill="#232946" fillOpacity="1" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z" />
+        </svg>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-secondary-50 opacity-50" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        
-        <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 mb-6 animate-fade-in">
-              Code & Verse
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Where technology meets poetry, and innovation dances with creativity.
-              Welcome to my digital space.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <Link href="/developer" className="btn-primary">
-                Explore My Work
-              </Link>
-              <Link href="/poetry" className="btn-secondary">
-                Read My Poetry
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg
-            className="w-6 h-6 text-gray-400"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <motion.section
+        className="flex flex-col items-center justify-center min-h-[90vh] text-center relative px-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <motion.h1
+          className="text-5xl md:text-7xl font-serif font-extrabold tracking-tight mb-6 text-[#f4f4f6] drop-shadow-lg"
+          variants={fadeInUp}
+          custom={1}
+        >
+          Code <span className="text-[#ff4f81]">&</span> Verse
+        </motion.h1>
+        <div className="mx-auto max-w-2xl">
+          <motion.p
+            className="text-2xl md:text-3xl font-sans font-semibold mb-8 text-[#f4f4f6] drop-shadow-xl"
+            variants={fadeInUp}
+            custom={2}
           >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
+            <span className="inline-block bg-gradient-to-r from-[#ff4f81] via-[#ff6f61] to-[#f4f4f6] bg-clip-text text-transparent animate-gradient-x">
+              Where logic meets lyric, and software becomes art.
+            </span>
+            <br/>
+            <span className="block mt-2 text-[#f4f4f6]/80">Welcome to a portfolio that codes, creates, and inspires.</span>
+          </motion.p>
         </div>
-      </section>
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+          variants={fadeInUp}
+          custom={3}
+        >
+          <Link href="/developer" className="px-8 py-3 rounded-full bg-[#232946] text-[#ff4f81] font-bold text-lg shadow-lg border-2 border-[#ff4f81] hover:bg-[#ff4f81] hover:text-[#232946] hover:scale-105 transition-all flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#ff4f81]">
+            <FaCode /> Explore My Code
+          </Link>
+          <Link href="/poetry" className="px-8 py-3 rounded-full border-2 border-[#ff6f61] text-[#ff6f61] font-bold text-lg shadow-lg hover:bg-[#ff6f61] hover:text-[#232946] hover:scale-105 transition-all flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#ff6f61]">
+            <FaFeatherAlt /> Read My Poetry
+          </Link>
+        </motion.div>
+      </motion.section>
 
-      {/* Quick Links */}
-      <section className="py-20 bg-white">
-        <div className="container">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card group">
-              <div className="h-12 w-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-200 transition-colors">
-                <svg
-                  className="w-6 h-6 text-primary-600"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h2 className="text-xl font-serif font-semibold mb-4">Development</h2>
-              <p className="text-gray-600 mb-4">
-                Specializing in Ruby on Rails, React, and full-stack web development.
-                Building scalable and elegant solutions.
-              </p>
-              <Link href="/developer" className="text-primary-600 font-medium hover:text-primary-700 transition-colors inline-flex items-center">
-                Learn more
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-            
-            <div className="card group">
-              <div className="h-12 w-12 bg-secondary-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary-200 transition-colors">
-                <svg
-                  className="w-6 h-6 text-secondary-600"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h2 className="text-xl font-serif font-semibold mb-4">Projects</h2>
-              <p className="text-gray-600 mb-4">
-                Explore my work on DriveNasa, Get2Business, and other innovative projects
-                that showcase technical excellence.
-              </p>
-              <Link href="/projects" className="text-primary-600 font-medium hover:text-primary-700 transition-colors inline-flex items-center">
-                View projects
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-            
-            <div className="card group">
-              <div className="h-12 w-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-200 transition-colors">
-                <svg
-                  className="w-6 h-6 text-primary-600"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h2 className="text-xl font-serif font-semibold mb-4">Poetry</h2>
-              <p className="text-gray-600 mb-4">
-                Discover my creative side through poetry and literary works that
-                explore the intersection of technology and human experience.
-              </p>
-              <Link href="/poetry" className="text-primary-600 font-medium hover:text-primary-700 transition-colors inline-flex items-center">
-                Read poetry
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
+      {/* About/Intro Section */}
+      <motion.section
+        className="relative z-10 py-24 md:py-32 px-4 flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <motion.div className="flex-1 bg-[#f4f4f6]/10 rounded-3xl shadow-xl p-10 backdrop-blur-md border border-[#ff4f81]/20" variants={fadeInUp} custom={1}>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#ff4f81] mb-4">Who am I?</h2>
+          <p className="text-lg text-[#f4f4f6]/90 mb-4">
+            I&apos;m Muzammal Abbas — a <span className="text-[#ff4f81] font-semibold">Ruby on Rails developer</span> and <span className="text-[#ff4f81] font-semibold">poet</span> who believes that code and creativity are two sides of the same coin.
+          </p>
+          <p className="text-[#f4f4f6]/70">
+            My work blends technical rigor with artistic vision, building digital experiences that are as elegant as they are functional. Whether I&apos;m architecting scalable systems or crafting verses, I strive for beauty, clarity, and impact.
+          </p>
+        </motion.div>
+        <motion.div className="flex-1 flex flex-col items-center gap-6" variants={fadeInUp} custom={2}>
+          <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[#ff4f81]/80 to-[#ff6f61]/60 shadow-2xl flex items-center justify-center relative overflow-hidden">
+            <span className="text-[5rem] font-serif text-[#232946]">{`</>`}</span>
+            <span className="absolute bottom-4 right-4 text-2xl text-[#ff4f81]/80 font-serif">诗</span>
           </div>
-        </div>
-      </section>
+          <div className="text-center text-[#f4f4f6]/80 italic text-lg">&quot;To code is to compose, to write is to architect.&quot;</div>
+        </motion.div>
+      </motion.section>
 
-      {/* Featured Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Featured Work
-            </h2>
-            <p className="text-lg text-gray-600">
-              A glimpse into my latest projects and creative endeavors
-            </p>
-          </div>
+      {/* Section Divider */}
+      <svg width="100%" height="100" viewBox="0 0 1440 100" className="w-full" preserveAspectRatio="none">
+        <path fill="#f4f4f6" fillOpacity="1" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z" />
+      </svg>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="card group">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-6 overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  Project Screenshot
-                </div>
-              </div>
-              <h3 className="text-xl font-serif font-semibold mb-2">DriveNasa</h3>
-              <p className="text-gray-600 mb-4">
-                A comprehensive racing event management system that streamlines
-                the entire process from registration to event completion.
-              </p>
-              <Link href="/projects" className="text-primary-600 font-medium hover:text-primary-700 transition-colors">
-                Learn more →
-              </Link>
-            </div>
-
-            <div className="card group">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-6 overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  Project Screenshot
-                </div>
-              </div>
-              <h3 className="text-xl font-serif font-semibold mb-2">Get2Business</h3>
-              <p className="text-gray-600 mb-4">
-                A marketing campaign planning platform that combines powerful
-                drawing tools with campaign management features.
-              </p>
-              <Link href="/projects" className="text-primary-600 font-medium hover:text-primary-700 transition-colors">
-                Learn more →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
-              Let&apos;s Connect
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Whether you&apos;re interested in collaboration, have a project in mind,
-              or just want to say hello, I&apos;d love to hear from you.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Get in Touch
+      {/* Featured Work Section */}
+      <motion.section
+        className="relative z-10 py-24 md:py-32 px-4 max-w-6xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <motion.h2 className="text-3xl md:text-4xl font-serif font-bold text-[#ff4f81] mb-12 text-center" variants={fadeInUp} custom={1}>Featured Work</motion.h2>
+        <div className="grid md:grid-cols-2 gap-10">
+          <motion.div className="group bg-[#f4f4f6]/10 rounded-2xl shadow-xl p-8 border border-[#ff4f81]/10 hover:scale-[1.03] hover:shadow-2xl transition-all duration-300" variants={fadeInUp} custom={2}>
+            <h3 className="text-2xl font-serif font-bold text-[#ff4f81] mb-2">DriveNasa</h3>
+            <p className="text-[#f4f4f6]/90 mb-4">A comprehensive racing event management system built with Ruby on Rails and React. Streamlines everything from registration to event completion.</p>
+            <Link href="/projects" className="inline-flex items-center gap-2 text-[#ff4f81] font-semibold hover:underline">
+              Learn more <FaArrowRight />
             </Link>
-          </div>
+          </motion.div>
+          <motion.div className="group bg-[#f4f4f6]/10 rounded-2xl shadow-xl p-8 border border-[#ff4f81]/10 hover:scale-[1.03] hover:shadow-2xl transition-all duration-300" variants={fadeInUp} custom={3}>
+            <h3 className="text-2xl font-serif font-bold text-[#ff4f81] mb-2">Get2Business</h3>
+            <p className="text-[#f4f4f6]/90 mb-4">A marketing campaign platform with powerful drawing tools and campaign management features. Built for creative teams and efficient workflows.</p>
+            <Link href="/projects" className="inline-flex items-center gap-2 text-[#ff4f81] font-semibold hover:underline">
+              Learn more <FaArrowRight />
+            </Link>
+          </motion.div>
         </div>
-      </section>
-    </>
+      </motion.section>
+
+      {/* Section Divider */}
+      <svg width="100%" height="100" viewBox="0 0 1440 100" className="w-full" preserveAspectRatio="none">
+        <path fill="#232946" fillOpacity="1" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z" />
+      </svg>
+
+      {/* Poetry Section */}
+      <motion.section
+        className="relative z-10 py-24 md:py-32 px-4 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <motion.div className="flex-1" variants={fadeInUp} custom={1}>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#ff4f81] mb-6">Poetry in Code</h2>
+          <p className="text-lg text-[#f4f4f6]/90 mb-4 italic">خوابوں کی سرزمیں پہ کبھی چل کے تو دیکھو<br/>لفظوں کے آئینے میں کبھی ڈھل کے تو دیکھو<br/>یہ شاعری بھی کوڈ کی طرح ہے،<br/>جذبوں کو کمپائل کر کے سنبھل کے تو دیکھو</p>
+          <Link href="/poetry" className="inline-block mt-4 px-8 py-3 rounded-full border-2 border-[#ff6f61] text-[#ff6f61] font-bold text-lg shadow-lg hover:bg-[#ff6f61] hover:text-[#232946] hover:scale-105 transition-all">
+            Read More Poetry
+          </Link>
+        </motion.div>
+        <motion.div className="flex-1 flex flex-col items-center gap-6" variants={fadeInUp} custom={2}>
+          <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-[#ff4f81]/80 to-[#ff6f61]/60 shadow-2xl flex items-center justify-center relative overflow-hidden">
+            <span className="text-[4rem] font-serif text-[#232946]">诗</span>
+          </div>
+          <div className="text-center text-[#f4f4f6]/80 italic text-lg">&quot;Poetry is the code of the soul.&quot;</div>
+        </motion.div>
+      </motion.section>
+
+      {/* Section Divider */}
+      <svg width="100%" height="100" viewBox="0 0 1440 100" className="w-full" preserveAspectRatio="none">
+        <path fill="#f4f4f6" fillOpacity="1" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z" />
+      </svg>
+
+      {/* Contact/CTA Section */}
+      <motion.section
+        className="relative z-10 py-20 md:py-28 px-4 max-w-4xl mx-auto text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#ff4f81] mb-6">Let&apos;s Connect</h2>
+        <p className="text-lg text-[#f4f4f6]/90 mb-8">Whether you&apos;re interested in collaboration, have a project in mind, or just want to say hello, I&apos;d love to hear from you.</p>
+        <Link href="/contact" className="px-10 py-4 rounded-full bg-[#ff4f81] text-[#232946] font-bold text-xl shadow-lg hover:scale-105 hover:bg-[#ff6f61] hover:text-[#232946] transition-all inline-block">
+          Get in Touch
+        </Link>
+      </motion.section>
+    </main>
   );
 }
