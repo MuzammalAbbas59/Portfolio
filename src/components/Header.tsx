@@ -46,33 +46,68 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className={`nav-link ${isActive('/') ? 'text-accent-600 font-semibold' : ''}`}
+              className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
+                isActive('/') 
+                  ? 'text-[#ff4f81]' 
+                  : 'text-[#232946] hover:text-[#ff4f81]'
+              } group`}
             >
-              Home
+              <span className="relative z-10">Home</span>
+              <span className={`absolute inset-0 bg-[#ff4f81]/10 rounded-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${
+                isActive('/') ? 'scale-x-100' : ''
+              }`}></span>
             </Link>
             <Link
               href="/developer"
-              className={`nav-link ${isActive('/developer') ? 'text-accent-600 font-semibold' : ''}`}
+              className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
+                isActive('/developer') 
+                  ? 'text-[#ff4f81]' 
+                  : 'text-[#232946] hover:text-[#ff4f81]'
+              } group`}
             >
-              Developer
+              <span className="relative z-10">Developer</span>
+              <span className={`absolute inset-0 bg-[#ff4f81]/10 rounded-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${
+                isActive('/developer') ? 'scale-x-100' : ''
+              }`}></span>
             </Link>
             <Link
               href="/poetry"
-              className={`nav-link ${isActive('/poetry') ? 'text-accent-600 font-semibold' : ''}`}
+              className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
+                isActive('/poetry') 
+                  ? 'text-[#ff4f81]' 
+                  : 'text-[#232946] hover:text-[#ff4f81]'
+              } group`}
             >
-              Poetry
+              <span className="relative z-10">Poetry</span>
+              <span className={`absolute inset-0 bg-[#ff4f81]/10 rounded-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${
+                isActive('/poetry') ? 'scale-x-100' : ''
+              }`}></span>
             </Link>
             <Link
               href="/projects"
-              className={`nav-link ${isActive('/projects') ? 'text-accent-600 font-semibold' : ''}`}
+              className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
+                isActive('/projects') 
+                  ? 'text-[#ff4f81]' 
+                  : 'text-[#232946] hover:text-[#ff4f81]'
+              } group`}
             >
-              Projects
+              <span className="relative z-10">Projects</span>
+              <span className={`absolute inset-0 bg-[#ff4f81]/10 rounded-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${
+                isActive('/projects') ? 'scale-x-100' : ''
+              }`}></span>
             </Link>
             <Link
               href="/contact"
-              className={`nav-link ${isActive('/contact') ? 'text-accent-600 font-semibold' : ''}`}
+              className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
+                isActive('/contact') 
+                  ? 'text-[#ff4f81]' 
+                  : 'text-[#232946] hover:text-[#ff4f81]'
+              } group`}
             >
-              Contact
+              <span className="relative z-10">Contact</span>
+              <span className={`absolute inset-0 bg-[#ff4f81]/10 rounded-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${
+                isActive('/contact') ? 'scale-x-100' : ''
+              }`}></span>
             </Link>
           </nav>
 
